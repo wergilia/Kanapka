@@ -57,7 +57,7 @@ app.use(require('node-sass-middleware')({
 }));
 
 app.use(session({
-  secret: 'angular auth passport secret shh', // words para mezclar con salt, puede ser pepe
+  secret: 'secret polonia react abstraction', // words para mezclar con salt, puede ser pepe
   resave: true,
   saveUninitialized: true,
   cookie: {
@@ -83,8 +83,10 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const authRouter = require('./routes/auth');
+const sandRouter = require('./routes/sandwichCRUD')
 // const genericCrud = require('./routes/genericCRUD');
 app.use('/api/auth', authRouter);
+app.use('/api/sandwich', sandRouter);
 // app.use('/api/news', genericCrud(require('./models/News')));
 // app.use('/api/user', genericCrud(require('./models/User')));
 

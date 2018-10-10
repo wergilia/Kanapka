@@ -1,4 +1,3 @@
-// auth/Signup.js
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from './AuthService'
@@ -46,12 +45,12 @@ class Login extends Component {
 
       <form onSubmit={this.handleFormSubmit}>
         <fieldset>
-          <label>Username:</label>
+          <label>Username</label>
           <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
         </fieldset>
 
         <fieldset>
-          <label>Password:</label>
+          <label>Password</label>
           <input type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
         </fieldset>
 

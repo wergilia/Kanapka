@@ -9,6 +9,7 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import AuthService from './components/auth/AuthService';
 import Contents from './components/contents/Contents'
+import SandwichDisplayer from './components/wall/SandwichDisplayer';
 
 class App extends Component {
 
@@ -64,6 +65,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
+            <SandwichDisplayer />
             <Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>

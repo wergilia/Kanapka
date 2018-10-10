@@ -1,16 +1,15 @@
-// auth/auth-service.js
 import axios from 'axios';
 
 class AuthService {
   constructor() {
     this.service = axios.create({
-      baseURL: 'http://localhost:3010/api/auth',
+      baseURL: 'http://localhost:3001/api/auth',
       withCredentials: true
     });
   }
 
-  signup = (username, password) => {
-    return this.service.post('/signup', {username, password})
+  signup = (username, password, email) => {
+    return this.service.post('/signup', {username, password, email})
     .then(response => response.data)
   }
 

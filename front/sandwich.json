@@ -1,0 +1,23 @@
+{
+    "img": "./images/florence-pecorino-parsley-anchovy-sandwich.webp",
+    "name": "Pecorino parsley anchovy sandwich",
+    "ingredients": [{"base": "whole wheat", "middle": ["pecorino", "anochovy"], "toppings": [], "condiments": ["parsley", "olive oil"]}],
+    "author": {"type": "User_id"},
+    "rating": {"rating": "Sandwich_id"}
+}
+
+{ 
+    "img": "./images/freshVeggieBagel.jpg",
+    "name": "Fresh Veggie Bagel",
+    "ingredients": [{"base": "bagel", "middle": ["pecorino", "anochovy"], "toppings": ["tomatoes", "lettuce", "cucumber", "pepper"], "condiments": ["black pepper", "mustard"]}],
+    "author": {"type": "User_id"},
+    "rating": {"rating": "Sandwich_id"}
+}
+
+{ 
+    "img": "./images/kanapka-z-kozim-serem-burakiem-i-orzechami-wloskimi.jpg",
+    "name": "Goat cheese, beetroot and walnuts",
+    "ingredients": [{"base": "ryel", "middle": ["goat cheese"], "toppings": ["baked beetroot", "onion"], "condiments": ["olive oil", "mustard"]}],
+    "author": {"type": "User_id"},
+    "rating": {"rating": "Sandwich_id"}
+}
