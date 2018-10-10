@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/AuthService';
+import SandwichDisplayer from '../wall/SandwichDisplayer'
 
 class Navbar extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class Navbar extends Component {
   render() {
     if (this.state.loggedInUser) {
       return (
+          <div> 
         <nav className="nav-style">
           <ul>
             <li><a onClick={this.handleLogout}>Logout</a></li>
@@ -27,6 +29,7 @@ class Navbar extends Component {
 
           <h2>Welcome, {this.state.loggedInUser.username}</h2>
         </nav>
+            <SandwichDisplayer/> </div>
       )
     } else {
       return (

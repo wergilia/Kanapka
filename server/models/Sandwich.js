@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const sandwichSchema = new Schema({
+  name: String,
   imgName: {type: String, default: 'default-avatar.jpeg'},
   imgPath: {type: String, default: '/images/default-avatar.jpeg'},
   base: [{type: String, enum:["rye", "white", "whole wheat", "bagel"]}],

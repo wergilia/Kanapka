@@ -13,7 +13,7 @@ mongoose
 
   const sandwiches = [
         {
-            "img": "./images/florence-pecorino-parsley-anchovy-sandwich.webp",
+            "imgPath": "./images/florence-pecorino-parsley-anchovy-sandwich.webp",
             "name": "Pecorino parsley anchovy sandwich",
             "base": "whole wheat",
             "middle": ["pecorino", "anchovy"],
@@ -24,7 +24,7 @@ mongoose
         },
         
         { 
-            "img": "./images/freshVeggieBagel.jpg",
+            "imgPath": "./images/freshVeggieBagel.jpg",
             "name": "Fresh Veggie Bagel",
             "base": "bagel",
             "middle": "ricotta", 
@@ -35,7 +35,7 @@ mongoose
         },
         
         { 
-            "img": "./images/kanapka-z-kozim-serem-burakiem-i-orzechami-wloskimi.jpg",
+            "imgPath": "./images/kanapka-z-kozim-serem-burakiem-i-orzechami-wloskimi.jpg",
             "name": "Goat cheese, beetroot and walnuts",
             "base": "rye", 
             "middle": "goat cheese", 
