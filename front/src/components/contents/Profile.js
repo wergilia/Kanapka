@@ -5,9 +5,8 @@ export default class Profile extends Component {
     constructor() {
         super();
         this.state = {
-            username: "",
-            name: "",
-            picture: ""
+           profile:  null,
+           loading: true
 
         }
     }
@@ -21,14 +20,17 @@ export default class Profile extends Component {
         axios.get(url)
         .then (res => {
             console.log(res.data);
-            this.setState({username: res.data,  name: res.data, picture: res.data})
+            this.setState({profile: res.data, loading: false})
         })
         .catch(e => console.log(e))
     }
 
 
     render() {
+        let loading = this.state
         let {username, name, picture} = this.state
+        if(!loading){
+        console.log(username)
         return (
             <div>
                 <h2>username={this.state.username}</h2> 
@@ -36,5 +38,8 @@ export default class Profile extends Component {
                 <h4>picture={this.state.picture}</h4>
             </div>
         )
+     } else  {
+         return <p>Loading...</p>
+     }
     }
 }
