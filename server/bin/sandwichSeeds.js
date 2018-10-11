@@ -20,7 +20,7 @@ mongoose
             "toppings": null,
             "condiments": ["parsley", "olive oil"],
             "author": "5bbce2f2cc9747787cc25565",
-            "rating": null
+            
         },
         
         { 
@@ -31,7 +31,7 @@ mongoose
             "toppings": ["tomato", "lettuce", "cucumber", "pepper"], 
             "condiments": ["black pepper", "mustard"],
             "author": "5bbdd4f4c655dc20642835a1",
-            "rating": null
+            
         },
         
         { 
@@ -42,7 +42,7 @@ mongoose
             "toppings": ["baked beetroot", "onion", "walnuts"], 
             "condiments": ["olive oil", "mustard"],
             "author": "5bbdda2a9948f0265fecbc52",
-            "rating": null
+            
         }
     ];
 

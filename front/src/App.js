@@ -7,6 +7,7 @@ import Navbar from './components/navbar/Navbar';
 // import ProjectDetails from './components/projects/ProjectDetails';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
+import Profile from './components/contents/Profile';
 import AuthService from './components/auth/AuthService';
 import Contents from './components/contents/Contents'
 import SandwichDisplayer from './components/wall/SandwichDisplayer';
@@ -56,7 +57,9 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-            <Contents></Contents>
+            <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser}/>}/>
+            <Contents />
+            
           </header>
         </div>
       );
@@ -65,16 +68,17 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
+          </header>
             <SandwichDisplayer />
-            <Switch>
+            
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
-            </Switch>
-          </header>
+              
+            
         </div>
       );
     }
   }
 }
 
-export default App;
+export default App

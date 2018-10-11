@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const reviewSchema = new Schema({
     author:{type:Schema.Types.ObjectId, ref:'User'},
-    sandwraich:{type:Schema.Types.ObjectId, ref:'Sandwich'},
+    sandwich:{type:Schema.Types.ObjectId, ref:'Sandwich'},
     rating: {type: Number, min: 0, max: 5}
 
 }, {

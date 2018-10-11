@@ -8,7 +8,8 @@ const sandwichSchema = new Schema({
   base: [{type: String, enum:["rye", "white", "whole wheat", "bagel"]}],
   middle:[{type: String, enum:["pecorino", "ricotta", "gouda", "cheese", "goat cheese", "feta", "anchovy", "tuna", "ham", "salami"]}],
   toppings: [{type: String, enum:["tomato", "lettuce", "olives", "pepper", "cucumber", "onion", "baked beetroot", "walnuts"]}],
-  condiments: [{type: String, enum:["mayonese", "mustard", "horseradish", "parsley", "olive oil", "butter", "black pepper"]}]
+  condiments: [{type: String, enum:["mayonese", "mustard", "horseradish", "parsley", "olive oil", "butter", "black pepper"]}],
+  author: {type:Schema.Types.ObjectId, ref:'User'},
 }, {
   timestamps: {
     createdAt: 'created_at',
