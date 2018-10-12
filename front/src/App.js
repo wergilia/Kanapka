@@ -15,13 +15,13 @@ import SandwichDisplayerGrid from './components/wall/SandwichDisplayGrid'
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = { loggedInUser: null };
     this.service = new AuthService();
   }
 
-  getTheUser= (userObj) => {
+  getTheUser = (userObj) => {
     this.setState({
       loggedInUser: userObj
     })
@@ -29,40 +29,42 @@ class App extends Component {
 
   logout = () => {
     this.service.logout()
-    .then(() => {
-      this.setState({ loggedInUser: null });
-    })
+      .then(() => {
+        this.setState({ loggedInUser: null });
+      })
   }
 
-  fetchUser(){
-    if( this.state.loggedInUser === null ){
+  fetchUser() {
+    if (this.state.loggedInUser === null) {
       this.service.loggedin()
-      .then(response =>{
-        this.setState({
-          loggedInUser:  response
-        }) 
-      })
-      .catch( err =>{
-        this.setState({
-          loggedInUser:  false
-        }) 
-      })
+        .then(response => {
+          this.setState({
+            loggedInUser: response
+          })
+        })
+        .catch(err => {
+          this.setState({
+            loggedInUser: false
+          })
+        })
     }
   }
 
   render() {
     this.fetchUser()
 
-    if(this.state.loggedInUser){
+    if (this.state.loggedInUser) {
       return (
         <div className="App">
           <header className="App-header">
-            <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-            <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser}/>}/> 
-            <Link to="/profile"> My Profile </Link>         
-            
+            <Navbar userInSession={this.state.loggedInUser} logout={this.logout} /> 
           </header>
-            <SandwichDisplayerGrid />
+            <Switch> 
+            <Route exact path='/profile' render={() => <Profile currentUser={this.state.loggedInUser} />} />
+            <Route exact path='/sandwich' render={() => <SandwichDisplayerGrid  currentUser={this.state.loggedInUser} />} />
+            </Switch>
+           
+         
         </div>
       );
     } else {
@@ -70,14 +72,14 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-            <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
-            <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
+            <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
+            <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
           </header>
           <SandwichDisplayerGrid />
-            
-              
-              
-            
+
+
+
+
         </div>
       );
     }

@@ -21,15 +21,16 @@ class Navbar extends Component {
   render() {
     if (this.state.loggedInUser) {
       return (
-          <div> 
+           
         <nav className="nav-style">
           <ul>
+            <li><Link to="/profile"> My Profile </Link> </li>
             <li><a onClick={this.handleLogout}>Logout</a></li>
           </ul>
 
           <h2>Welcome, {this.state.loggedInUser.username}</h2>
         </nav>
-            <SandwichDisplayer/> </div>
+            
       )
     } else {
       return (

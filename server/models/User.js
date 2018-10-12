@@ -4,6 +4,7 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
+  name: String,
   email: {type: String, required: true, match: /\S+@\S+\.\S+/, trim: true},
   imgName: {type: String, default: 'default-avatar.jpeg'},
   imgPath: {type: String, default: '/images/default-avatar.jpeg'}
