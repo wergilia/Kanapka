@@ -11,7 +11,9 @@ import Profile from './components/contents/Profile';
 import AuthService from './components/auth/AuthService';
 // import Contents from './components/contents/Contents'
 // import SandwichDisplayer from './components/wall/SandwichDisplayer';
-import SandwichDisplayerGrid from './components/wall/SandwichDisplayGrid'
+import SandwichDisplayerGrid from './components/wall/SandwichDisplayGrid';
+import ProfileUpdate from './components/contents/ProfileUpdate'
+
 
 class App extends Component {
 
@@ -60,8 +62,10 @@ class App extends Component {
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} /> 
           </header>
             <Switch> 
-            <Route exact path='/profile' render={() => <Profile currentUser={this.state.loggedInUser} />} />
+            <Route exact path='/profile/:id' render={() => <Profile currentUser={this.state.loggedInUser}/>} />
             <Route exact path='/sandwich' render={() => <SandwichDisplayerGrid  currentUser={this.state.loggedInUser} />} />
+            <Route exact path="/edit/:id" render={() => <ProfileUpdate currentUser={this.state.loggedInUser}/>}/>
+
             </Switch>
            
          

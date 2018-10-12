@@ -19,10 +19,10 @@ export default class SandwichDisplayerGrid extends React.Component {
 
 
     allSandwiches(){
-            let url = `http://localhost:3001/api/sandwich/all`;
+            let url = `http://localhost:3001/sandwich/all`;
             console.log(url);
             axios.get(url)
-                 .then(res => {
+             .then(res => {
                      console.log(res.data);
                      this.setState({sandwiches: res.data, loading: false});
                  })

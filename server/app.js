@@ -87,9 +87,9 @@ const authRouter = require('./routes/auth');
 const sandRouter = require('./routes/sandwichCRUD');
 const profileRouter = require('./routes/profileCRUD');
 // const genericCrud = require('./routes/genericCRUD');
-app.use('/api/auth', authRouter);
-app.use('/api/sandwich', sandRouter);
-app.use('/api/profile', profileRouter);
+app.use('/auth', authRouter);
+app.use('/sandwich', sandRouter);
+app.use('/profile', profileRouter);
 // app.use('/api/news', genericCrud(require('./models/News')));
 // app.use('/api/user', genericCrud(require('./models/User')));
 

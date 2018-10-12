@@ -4,20 +4,24 @@ const User = require('../models/User');
 const passport = require('passport');
 
 router.get('/:id', (req, res, next) => {
-    console.log(req.params)
+
     User.findById(req.params.id)
         .then(data => res.status(200).json(data))
         .catch(err => console.log(err))
 })
 
-router.put('/:id', (req, res, next)=> {
-    User.findByIdAndUpdate(req.params.id, req.body)
-    .then(() => {
+router.post('/edit/:id', (req, res, next)=> {
+    console.log("holaaa")
+    console.log(req.params.id)
+ 
+    User.findById(req.params.id)
+    .then(res => {
+        console.log(res)
         res.json({message: 'Your profile has been updated successfully'})
     })
     .catch(err => {
         res.json(err);
-    })
+    }) 
 })
 
 router.delete('/:id', (req, res, next) => {

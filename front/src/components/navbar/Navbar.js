@@ -24,7 +24,7 @@ class Navbar extends Component {
            
         <nav className="nav-style">
           <ul>
-            <li><Link to="/profile"> My Profile </Link> </li>
+            <li><Link to={`/profile/${this.state.loggedInUser._id}`}> My Profile </Link> </li>
             <li><Link to="/sandwich"> Sandwiches </Link> </li>
             <li><a onClick={this.handleLogout}>Logout</a></li>
           </ul>
