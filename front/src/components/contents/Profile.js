@@ -12,7 +12,7 @@ export default class Profile extends Component {
             profile: null,
             loading: true,
             editable: false,
-params: props.currentUser._id
+            params: props.currentUser._id
         }
     }
 
@@ -20,7 +20,7 @@ params: props.currentUser._id
         this.profile()
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         console.log(nextProps)
     }
 
@@ -47,7 +47,7 @@ params: props.currentUser._id
             if (this.state.editable) {
                 return (
 
-                   <Link to={`/edit/${this.state.params}`}>Weronika</Link>
+                    <Link to={`/edit/${this.state.params}`}>Weronika</Link>
                 )
 
             } else {
@@ -62,17 +62,16 @@ params: props.currentUser._id
                                 </div>
                                 <div className="media-content">
                                     <p className="title is-4">{this.state.profile.username}</p>
+                                    <p className="subtitle is-6">{this.state.profile.name}</p>
                                     <p className="subtitle is-6">{this.state.profile.email}</p>
                                 </div>
                             </div>
                         </div>
                         <footer className="card-footer">
 
-
-                            <button onClick={() => this.handleEditable()}>Edit</button>
-                            <Link to={`/edit/${this.state.params}`}>Pepe</Link>
+                            <Link to={`/edit/${this.state.params}`}><button onClick={() => this.handleEditable()}>Edit</button></Link>
                             <button>Delete</button>
-                            <button onClick={() => this.allSandwiches()}>Reload</button>
+                            {/* <button onClick={() => this.allSandwiches()}>Reload</button> */}
                         </footer>
                     </div>
                 )

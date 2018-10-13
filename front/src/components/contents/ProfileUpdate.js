@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default class ProfileUdpate extends React.Component {
     constructor(props) {
-  console.log(props.currentUser)
+        console.log(props.currentUser)
         super(props);
         this.state = {
             name: this.props.currentUser.name,
@@ -14,29 +14,34 @@ export default class ProfileUdpate extends React.Component {
     }
 
     submitForm() {
-        let url = `http://localhost:3001/profile/edit/` + this.props.currentUser._id;
+        let url = `http://localhost:3001/profile/edit/${this.props.currentUser._id}` 
         console.log(url)
-        axios.post(url)
-            .then(res => {
+        console.log(this.state)
+        axios.patch(url, this.state)
+            .then((res) => {
                 console.log(res)
             })
     }
 
     render() {
         return (
-        
+
             <div>
                 <hr />
                 <h3>Edit form</h3>
-            
-                    <label>Name:</label>
-                    <input type="text" name="title" value={this.state.name} onChange={e => this.setState({name: e.currentTarget.value})} />
-                    <label>Username:</label>
-                    <input type="text" name="title" value={this.state.username} onChange={e => this.setState({username: e.currentTarget.value})} />
 
-ergilia
-                    <button onClick={() => this.submitForm()} type="submit" value="Submit">Edit</button>
-          
+                <label>Username:</label>
+                <input type="text" name="title" value={this.state.username} onChange={e => this.setState({ username: e.currentTarget.value })} />
+                <label>Name:</label>
+                <input type="text" name="title" value={this.state.name} onChange={e => this.setState({ name: e.currentTarget.value })} />
+                <label>Email:</label>
+                <input type="text" name="title" value={this.state.email} onChange={e => this.setState({ name: e.currentTarget.value })} />
+                <label>Picture:</label>
+                <input type="file" name="title" value={this.state.imgPath} onChange={e => this.setState({ name: e.currentTarget.value })} />
+
+
+                <button onClick={() => this.submitForm()} type="submit" value="Submit">Save</button>
+
             </div>
         )
     }
