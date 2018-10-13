@@ -34,7 +34,7 @@ export default class ProfileUdpate extends React.Component {
                     <label>Username:</label>
                     <input type="text" name="title" value={this.state.username} onChange={e => this.setState({username: e.currentTarget.value})} />
 
-
+ergilia
                     <button onClick={() => this.submitForm()} type="submit" value="Submit">Edit</button>
           
             </div>
