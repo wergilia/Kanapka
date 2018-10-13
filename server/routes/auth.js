@@ -1,8 +1,10 @@
 const express = require('express');
+const passport = require('passport');
 const router  = express.Router();
 const bcrypt = require('bcrypt');
+const bcryptSalt = 10;
 const User = require('../models/User');
-const passport = require('passport');
+
 
 
 const login = (req, user) => {
@@ -10,7 +12,6 @@ const login = (req, user) => {
     req.login(user, err => {
       console.log('req.login ')
       console.log(user)
-
       
       if(err) {
         reject(new Error('Something went wrong'))
@@ -37,20 +38,20 @@ router.post('/signup', (req, res, next) => {
 
   // Check if user exists in DB
   User.findOne({ username })
-  .then( foundUser => {
-    if (foundUser) throw new Error('Username already exists');
+  .then( user => {
+    if (user) throw new Error('Username already exists');
 
-    const salt     = bcrypt.genSaltSync(10);
+    const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
-    return new User({
+    const newUser = new User({
       username,
       password: hashPass,
       email
-    }).save();
+    }).save()
+    .then( newUser => login(req, newUser)) // Login the user using passport
+    .then( user => res.json({status: 'signup & login successfully', user})) // Answer JSON
   })
-  .then( savedUser => login(req, savedUser)) // Login the user using passport
-  .then( user => res.json({status: 'signup & login successfully', user})) // Answer JSON
   .catch(e => next(e));
 });
 

@@ -7,8 +7,9 @@ import Navbar from './components/navbar/Navbar';
 // import ProjectDetails from './components/projects/ProjectDetails';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
-import Profile from './components/contents/Profile';
+import Profile from './components/profile/Profile';
 import AuthService from './components/auth/AuthService';
+import ProfileService from './components/profile/ProfileService'
 // import Contents from './components/contents/Contents'
 // import SandwichDisplayer from './components/wall/SandwichDisplayer';
 import SandwichDisplayerGrid from './components/wall/SandwichDisplayGrid';
@@ -21,6 +22,7 @@ class App extends Component {
     super(props)
     this.state = { loggedInUser: null };
     this.service = new AuthService();
+    this.profile = new ProfileService()
   }
 
   getTheUser = (userObj) => {
@@ -62,9 +64,10 @@ class App extends Component {
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} /> 
           </header>
             <Switch> 
-            <Route exact path='/profile/:id' render={() => <Profile currentUser={this.state.loggedInUser}/>} />
-            <Route exact path='/sandwich' render={() => <SandwichDisplayerGrid  currentUser={this.state.loggedInUser} />} />
-            <Route exact path="/edit/:id" render={() => <ProfileUpdate currentUser={this.state.loggedInUser}/>}/>
+            <Route exact path='/profile/:id' render={() => <Profile  getUser={this.getTheUser} userInSessionr={this.state.loggedInUser}/>} />
+            <Route exact path='/sandwich' render={() => <SandwichDisplayerGrid  />} />
+            {/* <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>}/> */}
+            {/* <Route exact path="/edit/:id" render={() => <ProfileUpdate currentUser={this.state.loggedInUser}/>}/> */}
 
             </Switch>
            

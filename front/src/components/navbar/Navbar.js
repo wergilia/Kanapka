@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/AuthService';
+import ProfileService from '../profile/ProfileService';
 import SandwichDisplayer from '../wall/SandwichDisplayer'
 
 class Navbar extends Component {
@@ -8,6 +9,8 @@ class Navbar extends Component {
     super(props);
     this.state = { loggedInUser: null };
     this.service = new AuthService();
+    this.service = new ProfileService()
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,7 +28,7 @@ class Navbar extends Component {
         <nav className="nav-style">
           <ul>
             <li><Link to={`/profile/${this.state.loggedInUser._id}`}> My Profile </Link> </li>
-            <li><Link to="/sandwich"> Sandwiches </Link> </li>
+            <li><Link to='/sandwich'> Sandwiches </Link> </li>
             <li><a onClick={this.handleLogout}>Logout</a></li>
           </ul>
 

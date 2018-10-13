@@ -4,12 +4,19 @@ const User = require('../models/User');
 const passport = require('passport');
 const _ = require('lodash');
 
-router.get('/:id', (req, res, next) => {
 
-    User.findById(req.params.id)
-        .then(data => res.status(200).json(data))
-        .catch(err => console.log(err))
-})
+router.get('/:id', (req, res, next) => {
+    User.find({userId: req.user._id})
+    .then(data => res.status(200).json(data))
+    .catch(e => next(e))
+  })
+
+// router.get('/:id', (req, res, next) => {
+
+//     User.findById(req.params.id)
+//         .then(data => res.status(200).json(data))
+//         .catch(err => console.log(err))
+// })
 
 // router.post('/edit/:id', (req, res, next)=> {
 //     console.log("holaaa")
@@ -25,7 +32,7 @@ router.get('/:id', (req, res, next) => {
 //     }) 
 // })
 
-router.patch('/profile/edit/:id', (req,res,next) => {
+router.patch('/edit/:id', (req,res,next) => {
     const {id} = req.params;
     const object = _.pickBy(req.body, (e,k) => paths.includes(k));
     const updates = _.pickBy(object, _.identity);
@@ -38,6 +45,25 @@ router.patch('/profile/edit/:id', (req,res,next) => {
         })
         .catch(e => next(e))
 })
+
+
+
+module.exports = router
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // router.patch('/:id',(req,res,next) => {
 //     const {id} = req.params;
@@ -61,5 +87,3 @@ router.patch('/profile/edit/:id', (req,res,next) => {
 //         res.json(err)
 //     })
 // })
-
-module.exports = router
