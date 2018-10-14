@@ -13,7 +13,7 @@ import ProfileService from './components/profile/ProfileService'
 // import Contents from './components/contents/Contents'
 // import SandwichDisplayer from './components/wall/SandwichDisplayer';
 import SandwichDisplayerGrid from './components/wall/SandwichDisplayGrid';
-import ProfileUpdate from './components/contents/ProfileUpdate'
+import ProfileUpdateForm from './components/profile/ProfileUpdateForm'
 
 
 class App extends Component {
@@ -64,7 +64,7 @@ class App extends Component {
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} /> 
           </header>
             <Switch> 
-            <Route exact path='/profile/:id' render={() => <Profile  getUser={this.getTheUser} userInSessionr={this.state.loggedInUser}/>} />
+            <Route exact path='/profile/:id' render={() => <Profile  getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>} />
             <Route exact path='/sandwich' render={() => <SandwichDisplayerGrid  />} />
             {/* <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>}/> */}
             {/* <Route exact path="/edit/:id" render={() => <ProfileUpdate currentUser={this.state.loggedInUser}/>}/> */}

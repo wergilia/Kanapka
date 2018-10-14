@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-export default class ProfileUdpate extends React.Component {
+export default class ProfileUdpateForm extends React.Component {
     constructor(props) {
         console.log(props.currentUser)
         super(props);
@@ -29,8 +29,9 @@ export default class ProfileUdpate extends React.Component {
             <div>
                 <hr />
                 <h3>Edit form</h3>
+                <p>HELLOOOOOOOOOOOOOOO Update</p>
 
-                <label>Username:</label>
+                {/* <label>Username:</label>
                 <input type="text" name="title" value={this.state.username} onChange={e => this.setState({ username: e.currentTarget.value })} />
                 <label>Name:</label>
                 <input type="text" name="title" value={this.state.name} onChange={e => this.setState({ name: e.currentTarget.value })} />
@@ -40,7 +41,7 @@ export default class ProfileUdpate extends React.Component {
                 <input type="file" name="title" value={this.state.imgPath} onChange={e => this.setState({ name: e.currentTarget.value })} />
 
 
-                <button onClick={() => this.submitForm()} type="submit" value="Submit">Save</button>
+                <button onClick={() => this.submitForm()} type="submit" value="Submit">Save</button> */}
 
             </div>
         )
