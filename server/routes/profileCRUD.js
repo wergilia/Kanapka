@@ -33,17 +33,27 @@ router.get('/:id', (req, res, next) => {
 // })
 
 router.patch('/edit/:id', (req,res,next) => {
-    const {id} = req.params;
-    const object = _.pickBy(req.body, (e,k) => paths.includes(k));
-    const updates = _.pickBy(object, _.identity);
-    console.log(updates);
-   User.findByIdAndUpdate(id, updates ,{new:true})
-   console.log(updates)
-        .then( obj => {
-            res.redirect('/profile/:id')
-            res.status(200).json({status:'updated',obj});
-        })
-        .catch(e => next(e))
+      
+    User.findByIdAndUpdate(req.params.id, req.body, {new:true})
+    .then(() => {
+        res.json({message: `${req.params.username} profile has been updated successfully.`});
+      })
+      .catch(err => {
+        res.json(err);
+      })
+
+
+//     const {id} = req.params;
+//     const object = _.pickBy(req.body, (e,k) => paths.includes(k));
+//     const updates = _.pickBy(object, _.identity);
+//     console.log(updates);
+//    User.findByIdAndUpdate(id, updates ,{new:true})
+//    console.log(updates)
+//         .then( obj => {
+//             res.redirect('/profile/:id')
+//             res.status(200).json({status:'updated',obj});
+//         })
+//         .catch(e => next(e))
 })
 
 

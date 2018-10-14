@@ -34,8 +34,7 @@ class Profile extends Component {
     }
 
     toggleForm(){
-        const hidden = !this.state.hidden
-        this.setState({hidden:hidden})
+        this.setState({hidden: false})
     }
 
     handleEditable() {
@@ -57,7 +56,7 @@ class Profile extends Component {
                             <div className="media">
                                 <div className="media-left">
                                     <figure className="image is-48x48">
-                                        <img src="{this.state.imgPath}" />
+                                        <img src={this.props.userInSession.imgPath}/>
                                     </figure>
                                 </div>
                                 <h1>HELLLLLLOOOOOOOOOS</h1>
@@ -71,9 +70,9 @@ class Profile extends Component {
                         <footer className="card-footer">
 
                             {/* <Link to={`/edit/${this.state.params}`}> */}
-                            {/* <button onClick={() => this.toggleForm()}>Edit</button>
+                            <button onClick={() => this.toggleForm()}>Edit</button>
                             <div hidden={this.state.hidden}><ProfileUpdateForm toggleForm={() => this.toggleForm()} userInSession={this.state.loggedInUser} getUser={this.getTheUser}/> </div>
-                            <button>Delete</button> */}
+                            <button>Delete</button>
                             {/* <button onClick={() => this.allSandwiches()}>Reload</button> */}
                         </footer>
                     </div>

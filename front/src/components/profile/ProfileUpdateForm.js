@@ -1,50 +1,79 @@
 import React from 'react';
-import axios from 'axios';
+import ProfileService from './ProfileService'
 
 export default class ProfileUdpateForm extends React.Component {
     constructor(props) {
-        console.log(props.currentUser)
         super(props);
-        this.state = {
-            name: this.props.currentUser.name,
-            username: this.props.currentUser.username,
-            email: this.props.currentUser.email,
-            picture: this.props.currentUser.imgPath
+        this.state = { 
+            name: "",
+            username: "",
+            email: "",
+            imgPath: "",
+            imgName: ""
         }
-    }
 
-    submitForm() {
-        let url = `http://localhost:3001/profile/edit/${this.props.currentUser._id}` 
-        console.log(url)
-        console.log(this.state)
-        axios.patch(url, this.state)
-            .then((res) => {
-                console.log(res)
+        this.service = new ProfileService();            
+       
+        }
+
+        handleFormSubmit = (event) => {
+        
+            event.preventDefault();
+            const name = this.state.name;
+            const username = this.state.username;
+            const email = this.state.email;
+            const imgPath = this.state.imgPath;
+            const imgName = this.state.imgName
+
+            this.service.profile(name, username, email, imgPath, imgName, this.props.userInSession._id)
+            .then(res => {
+                this.setState({
+                    name: "",
+                    username: "",
+                    email: "",
+                    imgPath: "",
+                    imgName: ""
+                })
+                this.props.getUser(res.user)                
             })
-    }
+            .catch(err => console.log(err))
+        }
 
-    render() {
-        return (
+        handleChange = (event) => {
 
-            <div>
-                <hr />
-                <h3>Edit form</h3>
-                <p>HELLOOOOOOOOOOOOOOO Update</p>
+            let { name, value } = event.target;
+            this.setState({[name]: value});
+        }
+        
+        render() {
+            console.log(this.props.userInSession);
+            
+            return(
+                <div>
+                    <h3>Update your Profile</h3>
+                    <form onSubmit={this.handleFormSubmit}>
+                        <label>Name</label>
+                        <input type="text" name="name" value={this.state.name} onChange={(e) => this.handleChange(e)} />
 
-                {/* <label>Username:</label>
-                <input type="text" name="title" value={this.state.username} onChange={e => this.setState({ username: e.currentTarget.value })} />
-                <label>Name:</label>
-                <input type="text" name="title" value={this.state.name} onChange={e => this.setState({ name: e.currentTarget.value })} />
-                <label>Email:</label>
-                <input type="text" name="title" value={this.state.email} onChange={e => this.setState({ name: e.currentTarget.value })} />
-                <label>Picture:</label>
-                <input type="file" name="title" value={this.state.imgPath} onChange={e => this.setState({ name: e.currentTarget.value })} />
+                        <label>Username</label>
+                        <input type="text" name="username" value={this.state.username}  onChange={(e) => this.handleChange(e)} />
+
+                        <label>Email</label>
+                        <input type="text" name="email" value={this.state.email} onChange={(e) => this.handleChange(e)} />
+
+                        <label>Picture</label>
+                        <input type="file" name="imgPath" value={this.state.imgPath} onChange={(e) => this.handleChange(e)} />
+
+                        <input onClick={() =>this.props.toggleForm()} type="submit" value="Update" />
+                                       
+                    </form>
+                
+                </div>
+            )
+        }
 
 
-                <button onClick={() => this.submitForm()} type="submit" value="Submit">Save</button> */}
 
-            </div>
-        )
-    }
+
+
 }
-
