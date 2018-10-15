@@ -44,7 +44,7 @@ class Profile extends Component {
     render() {
         this.fetchUser()
         // let { loading } = this.state
-        // let { username, name, imgPath, imgName } = this.state.loggedInUser
+        // let { username, name, imgPath, } = this.state.loggedInUser
         console.log(this.state.loggedInUser)
         console.log(this.props) 
         // En this.props.userInSessionr.username deberia salirte This state al principio es null y por eso te falla. Porque el fetuser es asincrono. Pero los props los tiene desde el principio y lo puedes usar directamente 

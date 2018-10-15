@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
-const passport = require('passport');
+const uploadCloud = require('../config/cloudinary');
 const Sandwich = require('../models/Sandwich')
 
 router.get('/all', (req, res, next) => {
@@ -10,7 +9,26 @@ router.get('/all', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-// router.post('/all', parser.single('picture'), (req, res,next) => {
+router.post('/:id', uploadCloud.single('photo'), (req, res, next) => {
+    const { name, base, middle, toppings, condiments } = req.body;
+    const imgPath = req.file.url;
+    const newSandwich = new Sandwich({
+        name, 
+        base,
+        middle,
+        toppings,
+        condiments, 
+        imgPath
+    }).save()
+    .then(Sandwich => res.status(200).json({ status: 'Sandwich has been created' }))
+    .catch(e => next(e))  
+  });
+
+
+
+
+
+// router.post('/:id', parser.single('picture'), (req, res,next) => {
 //     Sandwich.findOneAndUpdate({}, { pictureUrl: req.file.url })
 //     .then(() => {
 //         res.json({

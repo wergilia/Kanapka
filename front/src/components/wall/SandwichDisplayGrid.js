@@ -36,7 +36,7 @@ export default class SandwichDisplayerGrid extends React.Component {
                 <div>
                     <button onClick={() => this.allSandwiches()}>Reload</button>
                     {sandwiches.map((sandwich) =>(
-                        <SandwichDisplayer {...sandwich} key={sandwich._id} imgPath={sandwich.imgPath} imgName={sandwich.imgName} base={sandwich.base} middle={sandwich.middle} toppings={sandwich.toppings} condiments={sandwich.condiments} />
+                        <SandwichDisplayer {...sandwich} key={sandwich._id} imgPath={sandwich.imgPath} base={sandwich.base} middle={sandwich.middle} toppings={sandwich.toppings} condiments={sandwich.condiments} />
                     ))}
                 </div>
             )

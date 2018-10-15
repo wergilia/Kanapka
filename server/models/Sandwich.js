@@ -3,7 +3,6 @@ const Schema   = mongoose.Schema;
 
 const sandwichSchema = new Schema({
   name: String,
-  imgName: {type: String, default: 'default-avatar.jpeg'},
   imgPath: {type: String, default: '/images/default-avatar.jpeg'},
   base: [{type: String, enum:["rye", "white", "whole wheat", "bagel"]}],
   middle:[{type: String, enum:["pecorino", "ricotta", "gouda", "cheese", "goat cheese", "feta", "anchovy", "tuna", "ham", "salami"]}],

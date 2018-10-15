@@ -8,8 +8,16 @@ class AuthService {
     });
   }
 
-  signup = (username, password, email) => {
-    return this.service.post('/signup', {username, password, email})
+  signup = (username, password, email, imgPath) => {
+
+    const formData = new FormData();
+    formData.append("username", username)
+    formData.append("email", email)
+    formData.append("password", password)
+    formData.append("photo", imgPath)
+
+
+    return this.service.post('/signup', formData, {headers: {'Content-Type': 'multipart/form-data'}})
     .then(response => response.data)
   }
 

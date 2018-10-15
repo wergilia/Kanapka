@@ -1,3 +1,4 @@
+const uploadCloud = require('../config/cloudinary');
 const express = require('express');
 const passport = require('passport');
 const router  = express.Router();
@@ -24,12 +25,12 @@ const login = (req, user) => {
 
 
 // SIGNUP
-router.post('/signup', (req, res, next) => {
+router.post('/signup', uploadCloud.single('photo'), (req, res, next) => {
 
+  console.log(req)
   const {username, password, email} = req.body;
-
-  console.log('username', username)
-  console.log('password', password)
+  const imgPath = req.file.url
+  
 
   // Check for non empty user or password
   if (!username || !password){
@@ -40,19 +41,21 @@ router.post('/signup', (req, res, next) => {
   User.findOne({ username })
   .then( user => {
     if (user) throw new Error('Username already exists');
-
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
+
+    console.log(imgPath)
 
     const newUser = new User({
       username,
       password: hashPass,
-      email
+      email,
+      imgPath
     }).save()
     .then( newUser => login(req, newUser)) // Login the user using passport
     .then( user => res.json({status: 'signup & login successfully', user})) // Answer JSON
   })
-  .catch(e => next(e));
+  .catch(e => {console.log(e);next(e)});
 });
 
 

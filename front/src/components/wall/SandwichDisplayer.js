@@ -3,7 +3,6 @@ import React from "react";
 const SandwichDisplayer = ({
   name,
   imgPath,
-  imgName,
   base,
   middle,
   toppings,
@@ -11,7 +10,7 @@ const SandwichDisplayer = ({
 }) => {
   return (
     <div>
-      <img src={imgPath} alt={imgName} />
+      <img src={imgPath}  />
 
       <div className="name">
         <h2>

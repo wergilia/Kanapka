@@ -9,7 +9,7 @@ export default class ProfileUdpateForm extends React.Component {
             name: this.props.currentUser.name,
             username: this.props.currentUser.username,
             email: this.props.currentUser.email,
-            picture: this.props.currentUser.imgPath
+            imgPath: this.props.currentUser.imgPath
         }
     }
 

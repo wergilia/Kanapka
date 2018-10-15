@@ -6,7 +6,6 @@ const userSchema = new Schema({
   password: {type: String, required: true},
   name: String,
   email: {type: String, required: true, match: /\S+@\S+\.\S+/, trim: true},
-  imgName: {type: String, default: 'default-avatar.jpeg'},
   imgPath: {type: String, default: '/images/default-avatar.jpeg'}
 }, {
   timestamps: {

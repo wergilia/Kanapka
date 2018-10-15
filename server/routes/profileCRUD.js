@@ -11,6 +11,17 @@ router.get('/:id', (req, res, next) => {
     .catch(e => next(e))
   })
 
+router.put('/edit/:id', (req,res,next) => {
+      
+    User.findByIdAndUpdate(req.params.id, req.body, {new:true})
+    .then((user) => {
+        res.json({message: `${req.params.username} profile has been updated successfully.`, user});
+      })
+      .catch(err => {
+        res.json(err);
+      })
+      
+
 // router.get('/:id', (req, res, next) => {
 
 //     User.findById(req.params.id)
@@ -32,15 +43,7 @@ router.get('/:id', (req, res, next) => {
 //     }) 
 // })
 
-router.put('/edit/:id', (req,res,next) => {
-      
-    User.findByIdAndUpdate(req.params.id, req.body, {new:true})
-    .then((user) => {
-        res.json({message: `${req.params.username} profile has been updated successfully.`, user});
-      })
-      .catch(err => {
-        res.json(err);
-      })
+
 
 
 //     const {id} = req.params;

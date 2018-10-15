@@ -8,10 +8,10 @@ class ProfileService {
         })
     }
 
-    profile = (name, email, imgName, imgPath, id) => {
+    profile = (name, email, imgPath, id) => {
         console.log(id);
         
-        return this.service.put(`/edit/${id}`, {name, email, imgName, imgPath})
+        return this.service.put(`/edit/${id}`, {name, email, imgPath})
         .then(res => res.data)
     }
 

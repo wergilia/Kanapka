@@ -1,5 +1,5 @@
 require('dotenv').config();
-// require('./configs/cloudinary');
+require('./config/cloudinary');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');

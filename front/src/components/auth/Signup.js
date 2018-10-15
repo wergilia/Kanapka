@@ -13,13 +13,15 @@ class Signup extends Component {
     const username = this.state.username;
     const password = this.state.password;
     const email = this.state.email;
-
-    this.service.signup(username, password, email)
+    const photo = this.state.photo;
+    console.log(photo)
+    this.service.signup(username, password, email, photo)
     .then( response => {
         this.setState({
             username: "", 
             password: "",
             email: "",
+            photo: null
         });
         this.props.getUser(response.user)
     })
@@ -30,12 +32,17 @@ class Signup extends Component {
     const {name, value} = event.target;
     this.setState({[name]: value});
   }
+
+  handleChangeFile = (event) => {
+    const value = event.target.files[0];
+    this.setState({'photo': value});
+  }
       
 
   render() {
     return(
       <div>
-        <h3>Welcome! Create your account profile </h3>
+        <h3>Welcome to Kanapka! Create your account profile </h3>
 
         <form onSubmit={this.handleFormSubmit}>
           <fieldset>
@@ -51,6 +58,10 @@ class Signup extends Component {
           <fieldset>
             <label>Email</label>
             <input type="text" name="email" value={this.state.email} onChange={ e => this.handleChange(e)} />
+          </fieldset>
+
+          <fieldset>
+          <input type="file" name="photo" value={this.state.imgPath} onChange={ e => this.handleChangeFile(e)}/>
           </fieldset>
           
           <input type="submit" value="Sign up" />

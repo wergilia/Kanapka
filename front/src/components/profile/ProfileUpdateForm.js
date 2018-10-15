@@ -8,8 +8,7 @@ export default class ProfileUdpateForm extends React.Component {
             name: "",
             username: "",
             email: "",
-            imgPath: "",
-            imgName: ""
+            imgPath: ""            
         }
 
         this.service = new ProfileService();            
@@ -22,15 +21,14 @@ export default class ProfileUdpateForm extends React.Component {
             const name = this.state.name;
             const email = this.state.email;
             const imgPath = this.state.imgPath;
-            const imgName = this.state.imgName
+            
 
-            this.service.profile(name, email, imgPath, imgName, this.props.userInSession._id)
+            this.service.profile(name, email, imgPath, this.props.userInSession._id)
             .then(res => {
                 this.setState({
                     name: "",                   
                     email: "",
-                    imgPath: "",
-                    imgName: ""
+                    imgPath: ""                
                 })
                 this.props.getUser(res.user)                
             })
