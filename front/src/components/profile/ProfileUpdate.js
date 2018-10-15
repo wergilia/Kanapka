@@ -14,7 +14,7 @@ export default class ProfileUdpateForm extends React.Component {
     }
 
     submitForm() {
-        let url = `http://localhost:3001/profile/edit/${this.props.currentUser._id}` 
+        let url = `http://localhost:4000/profile/edit/${this.props.currentUser._id}` 
         console.log(url)
         console.log(this.state)
         axios.patch(url, this.state)

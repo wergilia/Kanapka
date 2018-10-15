@@ -1,17 +1,17 @@
 import axios from 'axios';
 
 class ProfileService {
-    contructor() {
+    constructor() {
         this.service = axios.create({
-            baseURL: 'http://localhost:3001/profile',
+            baseURL: 'http://localhost:4000/profile',
             withCredentials: true
         })
     }
 
-    profile = (name, username, email, imgName, imgPath, id) => {
+    profile = (name, email, imgName, imgPath, id) => {
         console.log(id);
         
-        return this.service.patch(`/edit/${id}`, {name, username, email, imgName, imgPath})
+        return this.service.put(`/edit/${id}`, {name, email, imgName, imgPath})
         .then(res => res.data)
     }
 

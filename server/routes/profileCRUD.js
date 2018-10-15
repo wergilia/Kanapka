@@ -32,11 +32,11 @@ router.get('/:id', (req, res, next) => {
 //     }) 
 // })
 
-router.patch('/edit/:id', (req,res,next) => {
+router.put('/edit/:id', (req,res,next) => {
       
     User.findByIdAndUpdate(req.params.id, req.body, {new:true})
-    .then(() => {
-        res.json({message: `${req.params.username} profile has been updated successfully.`});
+    .then((user) => {
+        res.json({message: `${req.params.username} profile has been updated successfully.`, user});
       })
       .catch(err => {
         res.json(err);

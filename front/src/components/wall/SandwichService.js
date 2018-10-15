@@ -3,7 +3,7 @@ import axios from 'axios';
 class SandwichService {
     constructor() {
         this.service = axios.create({
-            baseURL: 'http://localhost:3001/sandwich/',
+            baseURL: 'http://localhost:4000/sandwich/',
             withCredentials: true
         });
     }

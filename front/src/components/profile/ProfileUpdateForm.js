@@ -20,16 +20,14 @@ export default class ProfileUdpateForm extends React.Component {
         
             event.preventDefault();
             const name = this.state.name;
-            const username = this.state.username;
             const email = this.state.email;
             const imgPath = this.state.imgPath;
             const imgName = this.state.imgName
 
-            this.service.profile(name, username, email, imgPath, imgName, this.props.userInSession._id)
+            this.service.profile(name, email, imgPath, imgName, this.props.userInSession._id)
             .then(res => {
                 this.setState({
-                    name: "",
-                    username: "",
+                    name: "",                   
                     email: "",
                     imgPath: "",
                     imgName: ""
@@ -54,9 +52,6 @@ export default class ProfileUdpateForm extends React.Component {
                     <form onSubmit={this.handleFormSubmit}>
                         <label>Name</label>
                         <input type="text" name="name" value={this.state.name} onChange={(e) => this.handleChange(e)} />
-
-                        <label>Username</label>
-                        <input type="text" name="username" value={this.state.username}  onChange={(e) => this.handleChange(e)} />
 
                         <label>Email</label>
                         <input type="text" name="email" value={this.state.email} onChange={(e) => this.handleChange(e)} />

@@ -26,7 +26,7 @@ export default class Profile extends Component {
 
     profile() {
         console.log(this.props.currentUser.username)
-        let url = `http://localhost:3001/profile/` + this.props.currentUser._id;
+        let url = `http://localhost:4000/profile/` + this.props.currentUser._id;
         console.log(url);
         axios.get(url)
             .then(res => {
