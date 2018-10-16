@@ -66,7 +66,7 @@ class App extends Component {
             <Switch> 
             <Route exact path='/profile/:id' render={() => <Profile  getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>} />
             <Route exact path='/sandwich' render={() => <SandwichDisplayerGrid  />} />
-            <Route exact path='/sandwich/create' render={() => <SandwichCreateForm />} />
+            <Route exact path='/sandwich/create' render={() => <SandwichCreateForm getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>} />
             {/* <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>}/> */}
             {/* <Route exact path="/edit/:id" render={() => <ProfileUpdate currentUser={this.state.loggedInUser}/>}/> */}
 

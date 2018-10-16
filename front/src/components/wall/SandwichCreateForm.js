@@ -14,6 +14,7 @@ export default class SandwichCreateForm extends React.Component {
             author: ""           
         }
 console.log(props)
+console.log(this.state)
         this.service = new SandwichService();            
        
         }
@@ -61,9 +62,23 @@ console.log(props)
                 <h3>Let's create your favourite sandwich</h3>
                 <form onSubmit={this.handleFormSubmit}>
                   <fieldset>
-                    <label>name:</label>
+                    <label>Name</label>
                     <input type="text" name="name" value={this.state.name} onChange={ e => this.handleChange(e)}/>
                   </fieldset>
+
+                    <fieldset>
+                    <label>Base</label>
+                    <select> 
+                        <option value="rye">Rye</option>
+                        <option value="white">White</option> 
+                        <option value="whole wheat">Whole wheat</option>
+                        <option value="bagel">Bagel</option>
+                    </select>
+                    
+                    <input type="text" name="base" value={this.state.base} onChange={ e => this.handleChange(e)}/>
+                  </fieldset>
+
+
                  
                   <input type="submit" value="Create" />
                 </form>
