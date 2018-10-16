@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/AuthService';
 import ProfileService from '../profile/ProfileService';
+import SandwichService from '../wall/SandwichService';
 import SandwichDisplayer from '../wall/SandwichDisplayer'
 
 class Navbar extends Component {
@@ -29,6 +30,7 @@ class Navbar extends Component {
           <ul>
             <li><Link to={`/profile/${this.state.loggedInUser._id}`}> My Profile </Link> </li>
             <li><Link to='/sandwich'> Sandwiches </Link> </li>
+            <li><Link to='/sandwich/create'> Create a sandwich </Link> </li>
             <li><a onClick={this.handleLogout}>Logout</a></li>
           </ul>
 

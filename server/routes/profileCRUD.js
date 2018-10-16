@@ -21,7 +21,7 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req,res,next) => {
       
     User.findByIdAndUpdate(req.params.id, {name: username, email, imgPath:req.file.url}, {new:true})
     .then((user) => {
-        res.json({message: `${req.params.username} profile has been updated successfully.`, user});
+        res.json({message: `Your profile has been updated successfully.`, user});
       })
       .catch(err => {
         console.log(err)
@@ -37,7 +37,7 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req,res,next) => {
 // })
 
 // router.post('/edit/:id', (req, res, next)=> {
-//     console.log("holaaa")
+//     console.log("holaaa"
 //     console.log(req.params.id)
  
 //     User.findById(req.params.id)

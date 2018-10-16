@@ -13,6 +13,7 @@ import ProfileService from './components/profile/ProfileService'
 // import SandwichDisplayer from './components/wall/SandwichDisplayer';
 import SandwichDisplayerGrid from './components/wall/SandwichDisplayGrid';
 import ProfileUpdateForm from './components/profile/ProfileUpdateForm'
+import SandwichCreateForm from './components/wall/SandwichCreateForm';
 
 
 class App extends Component {
@@ -65,6 +66,7 @@ class App extends Component {
             <Switch> 
             <Route exact path='/profile/:id' render={() => <Profile  getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>} />
             <Route exact path='/sandwich' render={() => <SandwichDisplayerGrid  />} />
+            <Route exact path='/sandwich/create' render={() => <SandwichCreateForm />} />
             {/* <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>}/> */}
             {/* <Route exact path="/edit/:id" render={() => <ProfileUpdate currentUser={this.state.loggedInUser}/>}/> */}
 

@@ -1,6 +1,6 @@
+const uploadCloud = require('../config/cloudinary');
 const express = require('express');
 const router = express.Router();
-const uploadCloud = require('../config/cloudinary');
 const Sandwich = require('../models/Sandwich')
 
 router.get('/all', (req, res, next) => {
@@ -9,7 +9,7 @@ router.get('/all', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.post('/:id', uploadCloud.single('photo'), (req, res, next) => {
+router.post('/', uploadCloud.single('photo'), (req, res, next) => {
     const { name, base, middle, toppings, condiments } = req.body;
     const imgPath = req.file.url;
     const newSandwich = new Sandwich({

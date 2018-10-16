@@ -13,7 +13,7 @@ cloudinary.config({
 var storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'kanapka',
-  allowedFormats: ['jpg', 'png', 'jpeg'],
+  allowedFormats: ['jpg', 'png', 'jpeg', 'webp'],
   filename: function (req, file, cb) {
     cb(null, file.originalname); 
   }

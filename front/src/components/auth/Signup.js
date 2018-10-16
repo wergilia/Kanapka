@@ -4,7 +4,11 @@ import AuthService from './AuthService'
 class Signup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', email: '',file:null };
+    this.state = { 
+      username: '', 
+      password: '', 
+      email: '',
+      file: null };
     this.service = new AuthService();
   }
     
