@@ -27,6 +27,13 @@ class SandwichService {
         .then(res => res.data)
         .catch(err=>console.log(err))
     }
+
+    sandwichEdit = (name, base, middle, toppings, condiments, id) => {
+        return this.service.put(`/edit/${id}`, {name, base, middle, toppings, condiments })
+        .then(res => {console.log(res); return res.data})
+        .catch(e => console.log(e))
+    }
+    
 }
 
 export default SandwichService;

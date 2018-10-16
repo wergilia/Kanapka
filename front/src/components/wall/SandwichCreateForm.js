@@ -33,7 +33,7 @@ console.log(this.state)
             
             
             
-            this.service.create(author, name, base, middle, toppings, condiments, file, this.props.userInSession._id)
+            this.service.create(author, name, base, middle, toppings, condiments, file,)
             .then( res => {
                 console.log(res)
                 this.setState({
