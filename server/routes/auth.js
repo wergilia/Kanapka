@@ -27,7 +27,6 @@ const login = (req, user) => {
 // SIGNUP
 router.post('/signup', uploadCloud.single('photo'), (req, res, next) => {
 
-  console.log(req)
   const {username, password, email} = req.body;
   const imgPath = req.file.url
   

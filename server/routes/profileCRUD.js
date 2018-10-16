@@ -1,3 +1,4 @@
+const uploadCloud = require('../config/cloudinary');
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -11,13 +12,19 @@ router.get('/:id', (req, res, next) => {
     .catch(e => next(e))
   })
 
-router.put('/edit/:id', (req,res,next) => {
+router.post('/edit/:id', uploadCloud.single('photo'), (req,res,next) => {
+ 
+  const {username, password, email} = req.body;
+  // const imgPath = req.file.url
+
+  console.log(req.body)
       
-    User.findByIdAndUpdate(req.params.id, req.body, {new:true})
+    User.findByIdAndUpdate(req.params.id, {name: username, email, imgPath:req.file.url}, {new:true})
     .then((user) => {
         res.json({message: `${req.params.username} profile has been updated successfully.`, user});
       })
       .catch(err => {
+        console.log(err)
         res.json(err);
       })
       
@@ -62,17 +69,6 @@ router.put('/edit/:id', (req,res,next) => {
 
 
 module.exports = router
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -45,8 +45,6 @@ class Profile extends Component {
         this.fetchUser()
         // let { loading } = this.state
         // let { username, name, imgPath, } = this.state.loggedInUser
-        console.log(this.state.loggedInUser)
-        console.log(this.props) 
         // En this.props.userInSessionr.username deberia salirte This state al principio es null y por eso te falla. Porque el fetuser es asincrono. Pero los props los tiene desde el principio y lo puedes usar directamente 
         
 
@@ -71,19 +69,13 @@ class Profile extends Component {
 
                             {/* <Link to={`/edit/${this.state.params}`}> */}
                             <button onClick={() => this.toggleForm()}>Edit</button>
-                            <div hidden={this.state.hidden}><ProfileUpdateForm toggleForm={() => this.toggleForm()} userInSession={this.state.loggedInUser} getUser={this.getTheUser}/> </div>
+                            <div hidden={this.state.hidden}><ProfileUpdateForm toggleForm={() => this.toggleForm()} userInSession={this.state.loggedInUser} getUser={this.getTheUser} /> </div>
                             <button>Delete</button>
                             {/* <button onClick={() => this.allSandwiches()}>Reload</button> */}
                         </footer>
                     </div>
         )
     }
-
-    
-    
-    
-    
-    
     
 }
 

@@ -9,18 +9,16 @@ class ProfileService {
     }
 
     profile = (name, email, imgPath, id) => {
-        console.log(id);
+
+        const formData = new FormData();
+        formData.append("username", name)
+        formData.append("email", email)
+        formData.append("photo", imgPath)
         
-        return this.service.put(`/edit/${id}`, {name, email, imgPath})
+        return this.service.post(`/edit/${id}`, formData,  {headers: {'Content-Type': 'multipart/form-data'}})
         .then(res => res.data)
+        .catch(err=>console.log(err))
     }
-
-
-
-
-
-
-
 
 
 }

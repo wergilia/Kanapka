@@ -4,7 +4,7 @@ import AuthService from './AuthService'
 class Signup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', email: '' };
+    this.state = { username: '', password: '', email: '',file:null };
     this.service = new AuthService();
   }
     
@@ -13,9 +13,9 @@ class Signup extends Component {
     const username = this.state.username;
     const password = this.state.password;
     const email = this.state.email;
-    const photo = this.state.photo;
-    console.log(photo)
-    this.service.signup(username, password, email, photo)
+    const file = this.state.file;
+
+    this.service.signup(username, password, email, file)
     .then( response => {
         this.setState({
             username: "", 
@@ -35,7 +35,7 @@ class Signup extends Component {
 
   handleChangeFile = (event) => {
     const value = event.target.files[0];
-    this.setState({'photo': value});
+    this.setState({file: value});
   }
       
 
@@ -61,7 +61,8 @@ class Signup extends Component {
           </fieldset>
 
           <fieldset>
-          <input type="file" name="photo" value={this.state.imgPath} onChange={ e => this.handleChangeFile(e)}/>
+          <label>Picture</label>
+          <input type="file" onChange={ e => this.handleChangeFile(e)}/>
           </fieldset>
           
           <input type="submit" value="Sign up" />

@@ -8,7 +8,7 @@ export default class ProfileUdpateForm extends React.Component {
             name: "",
             username: "",
             email: "",
-            imgPath: ""            
+            file:null
         }
 
         this.service = new ProfileService();            
@@ -20,17 +20,17 @@ export default class ProfileUdpateForm extends React.Component {
             event.preventDefault();
             const name = this.state.name;
             const email = this.state.email;
-            const imgPath = this.state.imgPath;
+            const file = this.state.file;
             
 
-            this.service.profile(name, email, imgPath, this.props.userInSession._id)
+            this.service.profile(name, email, file, this.props.userInSession._id)
             .then(res => {
                 this.setState({
-                    name: "",                   
-                    email: "",
-                    imgPath: ""                
-                })
-                this.props.getUser(res.user)                
+                    name: res.user.name,                   
+                    email: res.user.email,
+                    photo: res.user.imgPath                
+                });
+                               
             })
             .catch(err => console.log(err))
         }
@@ -41,8 +41,12 @@ export default class ProfileUdpateForm extends React.Component {
             this.setState({[name]: value});
         }
         
+        handleChangeFile = (event) => {
+            const value = event.target.files[0];
+            this.setState({file: value});
+          }
+
         render() {
-            console.log(this.props.userInSession);
             
             return(
                 <div>
@@ -54,19 +58,15 @@ export default class ProfileUdpateForm extends React.Component {
                         <label>Email</label>
                         <input type="text" name="email" value={this.state.email} onChange={(e) => this.handleChange(e)} />
 
+                        <fieldset>
                         <label>Picture</label>
-                        <input type="file" name="imgPath" value={this.state.imgPath} onChange={(e) => this.handleChange(e)} />
-
-                        <input onClick={() =>this.props.toggleForm()} type="submit" value="Update" />
+                        <input type="file" onChange={(e) => this.handleChangeFile(e)} />
+                        </fieldset>
+                        <input type="submit" value="Update" />
                                        
                     </form>
                 
                 </div>
             )
         }
-
-
-
-
-
 }
