@@ -35,7 +35,7 @@ class SandwichService {
         .then(res => res.data)
         .catch(e => console.log(e))
     }
-    sandwichEdit = (name, base, middle, toppings, condiments, id, imgPath) => {
+    sandwichEdit = (name, base, middle, toppings, condiments, id) => {
         return this.service.put(`/edit/${id}`, {name, base, middle, toppings, condiments })
         .then(res => {console.log(res); return res.data})
         .catch(error => console.log(error))

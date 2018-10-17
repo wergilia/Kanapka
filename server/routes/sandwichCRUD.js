@@ -38,7 +38,7 @@ router.put('/edit/:sandwichId', (req, res, next) => {
         middle: req.body.middle,
         toppings: req.body.toppings,
         condiments: req.body.condiments,
-        imgPath: req.file.url
+       // imgPath: req.file.url
         
     }
     const newSandwich = new Sandwich(create)
