@@ -7,6 +7,7 @@ export default class SandwichEdit extends React.Component {
     super(props);
     this.state = {
       sandwich: null,
+      name: "",
       id: props.match.match.params.id,
       author: this.props.userInSession._id,
       sandwichName: "",
@@ -40,6 +41,7 @@ export default class SandwichEdit extends React.Component {
   }
 
   handleFormSubmit = event => {
+    console.log(this.state)
     event.preventDefault();
     const name = this.state.sandwichName;
     const sandwichBase = this.state.sandwichBase;
@@ -59,6 +61,7 @@ export default class SandwichEdit extends React.Component {
           sandwichMiddle: "",
           sandwichToppings: "",
           sandwichCondiments: "",
+          photo: ""
         });
       })
       .catch(err => console.log(err));
