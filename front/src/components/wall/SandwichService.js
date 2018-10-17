@@ -46,7 +46,8 @@ class SandwichService {
         formData.append("photo", imgPath)
         formData.append("author", author)
 
-        return this.service.put(`/edit/${id}`, formData, {headers: {'Content-Type': 'multipart/form-data'}})
+
+        return this.service.post(`/edit/${id}`, formData, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(res => {console.log(res); return res.data})
         .catch(error => console.log(error))
     }

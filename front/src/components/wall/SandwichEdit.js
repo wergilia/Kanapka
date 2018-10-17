@@ -8,7 +8,7 @@ export default class SandwichEdit extends React.Component {
     this.state = {
       sandwich: null,
       id: props.match.match.params.id,
-      author: props.userInSession._id,
+      author: this.props.userInSession._id,
       sandwichName: "",
       sandwichBase: [],
       sandwichMiddle: [],
@@ -49,7 +49,6 @@ export default class SandwichEdit extends React.Component {
     const id = this.state.id;
     const author = this.state.author
     const file = this.state.file
-
 
 
     this.service.sandwichEdit(name, sandwichBase, sandwichMiddle, sandwichToppings, sandwichCondiments, author, file, id)

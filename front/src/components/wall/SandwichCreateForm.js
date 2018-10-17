@@ -7,7 +7,7 @@ export default class SandwichCreateForm extends React.Component {
     super(props);
     this.state = {
       name: "",
-      file: null,
+      file: "",
       author: this.props.userInSession._id,
       //id: props.match.params.id,
       sandwichName: "",

@@ -34,7 +34,7 @@ router.post('/create', uploadCloud.single('photo'), (req, res, next) => {
         .catch(e => console.log(e))
 });
 
-router.put('/edit/:sandwichId',  uploadCloud.single('photo'), (req, res, next) => {
+router.post('/edit/:sandwichId',  uploadCloud.single('photo'), (req, res, next) => {
     console.log(req.params.sandwichId)
     console.log(req.body.author)
     console.log(req.body.photo)
