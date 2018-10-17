@@ -7,12 +7,14 @@ export default class SandwichEdit extends React.Component {
     super(props);
     this.state = {
       sandwich: null,
-      id: props.match.params.id,
+      id: props.match.match.params.id,
+      author: props.userInSession._id,
       sandwichName: "",
       sandwichBase: [],
       sandwichMiddle: [],
       sandwichToppings: [],
       sandwichCondiments: [],
+      file: "",
       bases: ["Rye", "White", "Whole Wheat", "Bagel"],
       middles: ["Pecorino", "Ricotta", "Gouda", "Cheese", "Goat Cheese", "Feta", "Anchovy", "Tuna", "Ham", "Salami"],
       toppings: ["Tomato", "Lettuce", "Olives", "Pepper", "Cucumber", "Onion", "Baked Beetroot", "Walnuts"],
@@ -45,24 +47,27 @@ export default class SandwichEdit extends React.Component {
     const sandwichToppings = this.state.sandwichToppings;
     const sandwichCondiments = this.state.sandwichCondiments;
     const id = this.state.id;
+    const author = this.state.author
+    const file = this.state.file
 
 
-    this.service.sandwichEdit(name, sandwichBase, sandwichMiddle, sandwichToppings, sandwichCondiments, id)
-    .then(res => {
-      this.setState({
-        name: "",
-        sandwichBase: "",
-        sandwichMiddle: "",
-        sandwichToppings: "",
-        sandwichCondiments: "",
-      });
-    })
-    .catch(err => console.log(err));
+
+    this.service.sandwichEdit(name, sandwichBase, sandwichMiddle, sandwichToppings, sandwichCondiments, author, file, id)
+      .then(res => {
+        this.setState({
+          name: "",
+          sandwichBase: "",
+          sandwichMiddle: "",
+          sandwichToppings: "",
+          sandwichCondiments: "",
+        });
+      })
+      .catch(err => console.log(err));
   };
-  
+
   handleChange = (event) => {
     console.log(event.target)
-    let {name, value} = event.target
+    let { name, value } = event.target
     this.setState({ [name]: value });
   };
 
@@ -71,22 +76,27 @@ export default class SandwichEdit extends React.Component {
     let toppingsArr = this.state.sandwichToppings;
     let condimentsArr = this.state.sandwichCondiments;
 
-    if(name === "sandwichMiddle"){
+    if (name === "sandwichMiddle") {
       middleArr.push(value)
-    } else if (name === "sandwichToppings"){
+    } else if (name === "sandwichToppings") {
       toppingsArr.push(value)
-  
-    } else if (name === "sandwichCondiments"){
+
+    } else if (name === "sandwichCondiments") {
       condimentsArr.push(value)
-    } else{
+    } else {
       return;
     }
-    
+
     this.setState({
       sandwichMiddle: _.uniq(middleArr), sandwichToppings: _.uniq(toppingsArr), sandwichCondiments: _.uniq(condimentsArr)
     })
 
-}
+  }
+
+  handleChangeFile = (event) => {
+    const value = event.target.files[0];
+    this.setState({file: value});
+  }
 
   render() {
     return (
@@ -94,48 +104,51 @@ export default class SandwichEdit extends React.Component {
         <h3>Update your Sandwich</h3>
         <form onSubmit={this.handleFormSubmit}>
           <label>Name</label>
-          <input type="text" name="sandwichName" value={this.state.sandwichName} onChange={e => this.handleChange(e)}/>
+          <input type="text" name="sandwichName" value={this.state.sandwichName} onChange={e => this.handleChange(e)} />
 
           <label>Base</label>
           <select type="select-multiple" name="sandwichBase" onChange={(e) => { console.log(e.target); return this.handleChange(e) }}>
-            {this.state.sandwichBase ? 
-            this.state.bases.map((base, i) => {
+            {this.state.sandwichBase ?
+              this.state.bases.map((base, i) => {
                 return (
                   <option key={i} type="text" name="sandwichBase" value={base}>{base}</option>
                 )
-              }): ""}
+              }) : ""}
           </select>
-<br></br>
-<br></br>
+          <br></br>
+          <br></br>
           <b><label>Middle</label></b>
           {this.state.sandwichMiddle ?
             this.state.middles.map((middle, i) => (
               <div value={this.state.sandwichMiddle} key={i} onChange={(e) => { return this.handleChangeArray(i, e.target.value, e.target.name) }}>
-                <input type="checkbox" name={`sandwichMiddle`} value={middle}/>
+                <input type="checkbox" name={`sandwichMiddle`} value={middle} />
                 <label htmlFor={`sandwichMiddle`}>{middle}</label>
               </div>
             ))
             : ""}
-            <br></br>
+          <br></br>
           <b> <label>Toppings</label></b>
           {this.state.sandwichToppings ?
             this.state.toppings.map((toppings, i) => (
               <div value={this.state.sandwichToppings} key={i} onChange={(e) => { return this.handleChangeArray(i, e.target.value, e.target.name) }}>
-                <input type="checkbox" name={`sandwichToppings`} value={toppings}/>
+                <input type="checkbox" name={`sandwichToppings`} value={toppings} />
                 <label htmlFor={`sandwichToppings`}>{toppings}</label>
               </div>
             ))
             : ""}
-            <br></br>
+          <br></br>
           <b><label>Condiments</label></b>
           {this.state.sandwichCondiments ?
             this.state.condiments.map((condiments, i) => (
               <div value={this.state.sandwichCondiments} key={i} onChange={(e) => { return this.handleChangeArray(i, e.target.value, e.target.name) }}>
-                <input type="checkbox" name={`sandwichCondiments`} value={condiments}/>
+                <input type="checkbox" name={`sandwichCondiments`} value={condiments} />
                 <label htmlFor={`sandwichCondiments`}>{condiments}</label>
               </div>
             ))
             : ""}
+
+          <label>Photo</label>
+          <input type="file" name="photo" onChange={(e) => this.handleChangeFile(e)} />
 
           <input type="submit" value="Update" />
         </form>

@@ -60,7 +60,7 @@ export default class ProfileUdpateForm extends React.Component {
 
                         <fieldset>
                         <label>Picture</label>
-                        <input type="file" onChange={(e) => this.handleChangeFile(e)} />
+                        <input type="file" name="photo" onChange={(e) => this.handleChangeFile(e)} />
                         </fieldset>
                         <input type="submit" value="Update" />
                                        

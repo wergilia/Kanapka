@@ -7,27 +7,23 @@ const _ = require('lodash');
 
 
 router.get('/:id', (req, res, next) => {
-    User.find({userId: req.user._id})
+  User.find({ userId: req.user._id })
     .then(data => res.status(200).json(data))
     .catch(e => next(e))
-  })
+})
 
-router.post('/edit/:id', uploadCloud.single('photo'), (req,res,next) => {
- 
-  const {username, password, email} = req.body;
-  // const imgPath = req.file.url
+router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
+  const { username, password, email } = req.body;
 
-  console.log(req.body)
-      
-    User.findByIdAndUpdate(req.params.id, {name: username, email, imgPath:req.file.url}, {new:true})
-    .then((user) => {
-        res.json({message: `Your profile has been updated successfully.`, user});
-      })
-      .catch(err => {
-        console.log(err)
-        res.json(err);
-      })
-      
+  User.findByIdAndUpdate(req.params.id, { name: username, email, imgPath: req.file.url }, { new: true })
+    .then((user) =>
+      res.status(200).json({ message: `Your profile has been updated successfully.`, user })
+    )
+    .catch(err => {
+      console.log(err)
+      res.json(err);
+    })
+})
 
 // router.get('/:id', (req, res, next) => {
 
@@ -39,7 +35,7 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req,res,next) => {
 // router.post('/edit/:id', (req, res, next)=> {
 //     console.log("holaaa"
 //     console.log(req.params.id)
- 
+
 //     User.findById(req.params.id)
 //     .then(res => {
 //         console.log(res)
@@ -64,7 +60,7 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req,res,next) => {
 //             res.status(200).json({status:'updated',obj});
 //         })
 //         .catch(e => next(e))
-})
+
 
 
 

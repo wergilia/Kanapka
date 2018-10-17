@@ -33,10 +33,11 @@ export default class SandwichCreateForm extends React.Component {
     const sandwichToppings = this.state.sandwichToppings;
     const sandwichCondiments = this.state.sandwichCondiments;
     //const id = this.state.id;
-    const author = this.state.author
+    const author = this.state.author;
+    const file = this.state.file
 
 
-    this.service.create(name, sandwichBase, sandwichMiddle, sandwichToppings, sandwichCondiments, author)
+    this.service.create(name, sandwichBase, sandwichMiddle, sandwichToppings, sandwichCondiments, author, file)
     .then(res => {
       this.setState({
         name: "",
@@ -44,6 +45,7 @@ export default class SandwichCreateForm extends React.Component {
         sandwichMiddle: "",
         sandwichToppings: "",
         sandwichCondiments: "",
+        photo: null
       });
     })
     .catch(err => console.log(err));
@@ -76,6 +78,12 @@ export default class SandwichCreateForm extends React.Component {
     })
 
 }
+
+handleChangeFile = (event) => {
+  const value = event.target.files[0];
+  this.setState({file: value});
+}
+
     render() {
       return (
         <div>
@@ -124,6 +132,9 @@ export default class SandwichCreateForm extends React.Component {
               </div>
             ))
             : ""}
+
+             <label>Picture</label>
+          <input type="file" name="photo" onChange={ e => this.handleChangeFile(e)}/>
 
           <input type="submit" value="Create" />
         </form>

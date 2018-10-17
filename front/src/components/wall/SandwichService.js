@@ -13,18 +13,18 @@ class SandwichService {
             .then(response => response.data )
     }
 
-    create = (name, base, middle, toppings, condiments, author) => {
+    create = (name, base, middle, toppings, condiments, author, imgPath) => {
         
         const formData = new FormData();
         formData.append("name", name)
         formData.append("base", base)
-        formData.append("middle", middle)
-        formData.append("toppings", toppings)
-        formData.append("condiments", condiments)
-        //formData.append("photo", imgPath)
+        formData.append("middle",  JSON.stringify(middle))
+        formData.append("toppings", JSON.stringify(toppings))
+        formData.append("condiments",  JSON.stringify(condiments))
+        formData.append("photo", imgPath)
         formData.append("author", author)
    
-        return this.service.post('/', {name, base, middle, toppings, condiments, author})
+        return this.service.post('/create', formData,  {headers: {'Content-Type': 'multipart/form-data'}})
         .then(res => res.data)
         .catch(error=>console.log(error))
 
@@ -35,8 +35,18 @@ class SandwichService {
         .then(res => res.data)
         .catch(e => console.log(e))
     }
-    sandwichEdit = (name, base, middle, toppings, condiments, id) => {
-        return this.service.put(`/edit/${id}`, {name, base, middle, toppings, condiments })
+    sandwichEdit = (name, base, middle, toppings, condiments, id, author, imgPath) => {
+
+        const formData = new FormData();
+        formData.append("name", name)
+        formData.append("base", base)
+        formData.append("middle", JSON.stringify(middle))
+        formData.append("toppings", JSON.stringify(toppings))
+        formData.append("condiments", JSON.stringify(condiments))
+        formData.append("photo", imgPath)
+        formData.append("author", author)
+
+        return this.service.put(`/edit/${id}`, formData, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(res => {console.log(res); return res.data})
         .catch(error => console.log(error))
     }
