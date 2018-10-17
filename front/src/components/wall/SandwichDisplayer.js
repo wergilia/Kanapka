@@ -1,14 +1,29 @@
 import React from "react";
+import SandwichService from './SandwichService'
+import { Link } from "react-router-dom";
 
-const SandwichDisplayer = ({
-  name,
-  imgPath,
-  base,
-  middle,
-  toppings,
-  condiments
-}) => {
-  return (
+export default class SandwichDisplayer extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+    name: props.name,
+    imgPath: props.imgPath,
+    imgName: props.imgName,
+    base: props.base,
+    middle: props.middle,
+    toppings: props.toppings,
+    condiments: props.condiments,
+    id: props._id
+
+    }
+    this.service = new SandwichService();
+}
+
+  render() {
+
+    let {name, imgPath, imgName, base, middle, toppings, condiments, id} = this.state
+
+    return(
     <div>
       <img src={imgPath}  />
 
@@ -18,11 +33,12 @@ const SandwichDisplayer = ({
         </h2>
       </div>
 
-      <div className="base">
+        <div className="base">
         <ul>
           {base ? base.map((base, i) => <li key={i}>{base} </li>) : ""}
         </ul>
       </div>
+
 
       <div className="middle">
         <ul>
@@ -41,9 +57,9 @@ const SandwichDisplayer = ({
         <ul>
           {condiments ? condiments.map((condiments, i) => <li key={i}>{condiments} </li>) : ""}
         </ul>
-      </div>
+</div>
+<Link to={`/sandwich/edit/${id}`}>Edit Sandwich</Link>
     </div>
-  );
+  )
+    }
 };
-
-export default SandwichDisplayer;

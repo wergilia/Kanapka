@@ -14,6 +14,7 @@ import ProfileService from './components/profile/ProfileService'
 import SandwichDisplayerGrid from './components/wall/SandwichDisplayGrid';
 import ProfileUpdateForm from './components/profile/ProfileUpdateForm'
 import SandwichCreateForm from './components/wall/SandwichCreateForm';
+import SandwichEdit from './components/wall/SandwichEdit';
 
 
 class App extends Component {
@@ -67,6 +68,7 @@ class App extends Component {
             <Route exact path='/profile/:id' render={() => <Profile  getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>} />
             <Route exact path='/sandwich' render={() => <SandwichDisplayerGrid  />} />
             <Route exact path='/sandwich/create' render={() => <SandwichCreateForm getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>} />
+            <Route exact path='/sandwich/edit/:id' component={SandwichEdit} />
             {/* <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>}/> */}
             {/* <Route exact path="/edit/:id" render={() => <ProfileUpdate currentUser={this.state.loggedInUser}/>}/> */}
 

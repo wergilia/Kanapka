@@ -13,7 +13,7 @@ class SandwichService {
             .then(response => response.data )
     }
 
-    create = (name, imgPath, base, middle, toppings, condiments, author) => {
+    create = (name, base, middle, toppings, condiments, author) => {
         
         const formData = new FormData();
         formData.append("name", name)
@@ -21,17 +21,24 @@ class SandwichService {
         formData.append("middle", middle)
         formData.append("toppings", toppings)
         formData.append("condiments", condiments)
-        formData.append("photo", imgPath)
-        
-        return this.service.post('/', formData,  {headers: {'Content-Type': 'multipart/form-data'}})
+        //formData.append("photo", imgPath)
+        formData.append("author", author)
+   
+        return this.service.post('/', {name, base, middle, toppings, condiments, author})
         .then(res => res.data)
-        .catch(err=>console.log(err))
+        .catch(error=>console.log(error))
+
     }
 
-    sandwichEdit = (name, base, middle, toppings, condiments, id) => {
+    oneSandwich = (id) => {
+        return this.service.get(`/${id}`)
+        .then(res => res.data)
+        .catch(e => console.log(e))
+    }
+    sandwichEdit = (name, base, middle, toppings, condiments, id, imgPath) => {
         return this.service.put(`/edit/${id}`, {name, base, middle, toppings, condiments })
         .then(res => {console.log(res); return res.data})
-        .catch(e => console.log(e))
+        .catch(error => console.log(error))
     }
     
 }

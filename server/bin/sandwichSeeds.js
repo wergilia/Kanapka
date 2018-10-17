@@ -15,10 +15,10 @@ mongoose
         {
             "imgPath": "./images/florence-pecorino-parsley-anchovy-sandwich.webp",
             "name": "Pecorino parsley anchovy sandwich",
-            "base": "whole wheat",
-            "middle": ["pecorino", "anchovy"],
+            "base": "Whole Wheat",
+            "middle": ["Pecorino", "Anchovy"],
             "toppings": null,
-            "condiments": ["parsley", "olive oil"],
+            "condiments": ["Parsley", "Olive Oil"],
             "author": "5bbce2f2cc9747787cc25565",
             
         },
@@ -26,10 +26,10 @@ mongoose
         { 
             "imgPath": "./images/freshVeggieBagel.jpg",
             "name": "Fresh Veggie Bagel",
-            "base": "bagel",
-            "middle": "ricotta", 
-            "toppings": ["tomato", "lettuce", "cucumber", "pepper"], 
-            "condiments": ["black pepper", "mustard"],
+            "base": "Bagel",
+            "middle": "Ricotta", 
+            "toppings": ["Tomato", "Lettuce", "Cucumber", "Pepper"], 
+            "condiments": ["Black Pepper", "Mustard"],
             "author": "5bbdd4f4c655dc20642835a1",
             
         },
@@ -37,10 +37,10 @@ mongoose
         { 
             "imgPath": "./images/kanapka-z-kozim-serem-burakiem-i-orzechami-wloskimi.jpg",
             "name": "Goat cheese, beetroot and walnuts",
-            "base": "rye", 
-            "middle": "goat cheese", 
-            "toppings": ["baked beetroot", "onion", "walnuts"], 
-            "condiments": ["olive oil", "mustard"],
+            "base": "Rye", 
+            "middle": "Goat Cheese", 
+            "toppings": ["Baked Beetroot", "Onion", "Walnuts"], 
+            "condiments": ["Olive Oil", "Mustard"],
             "author": "5bbdda2a9948f0265fecbc52",
             
         }
@@ -54,4 +54,3 @@ mongoose
     console.log(`Created ${sandwiches.length} sandwiches`)
     mongoose.disconnect();
 })
-

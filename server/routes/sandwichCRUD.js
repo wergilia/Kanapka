@@ -11,17 +11,18 @@ router.get('/all', (req, res, next) => {
 
 router.post('/', uploadCloud.single('photo'), (req, res, next) => {
     const { name, base, middle, toppings, condiments } = req.body;
-    const imgPath = req.file.url;
+    console.log(req.body)
+    //const imgPath = req.file.url;
     const newSandwich = new Sandwich({
         name,
         base,
         middle,
         toppings,
         condiments,
-        imgPath
+        //imgPath: req.file.url
     }).save()
-        .then(Sandwich => res.status(200).json({ status: 'Sandwich has been created' }))
-        .catch(e => next(e))
+        .then(Sandwich => res.status(200).json(Sandwich))
+        .catch(e => console.log(e))
 });
 
 router.put('/edit/:sandwichId', (req, res, next) => {
@@ -37,7 +38,8 @@ router.put('/edit/:sandwichId', (req, res, next) => {
         middle: req.body.middle,
         toppings: req.body.toppings,
         condiments: req.body.condiments,
-        //imgPath
+        imgPath: req.file.url
+        
     }
     const newSandwich = new Sandwich(create)
     newSandwich.save()
@@ -47,16 +49,15 @@ router.put('/edit/:sandwichId', (req, res, next) => {
 
 
 
+router.get('/:sandwichId', (req,res,next) => {
+    Sandwich.findById(req.params.sandwichId)
+      .then(sandwich => {
+          return res.status(200).json(sandwich);
+        })
+        .catch(err => {
+          res.json(err);
+        }) 
+  })
 
-
-// router.post('/:id', parser.single('picture'), (req, res,next) => {
-//     Sandwich.findOneAndUpdate({}, { pictureUrl: req.file.url })
-//     .then(() => {
-//         res.json({
-//             success: true,
-//             pictureUrl: req.file.url
-//         })
-//     })
-// })
 
 module.exports = router
