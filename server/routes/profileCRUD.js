@@ -2,8 +2,9 @@ const uploadCloud = require('../config/cloudinary');
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Post = require('../models/Post')
 const passport = require('passport');
-const _ = require('lodash');
+// const _ = require('lodash');
 
 
 router.get('/:id', (req, res, next) => {
@@ -25,70 +26,23 @@ router.post('/edit/:id', uploadCloud.single('photo'), (req, res, next) => {
     })
 })
 
-// router.get('/:id', (req, res, next) => {
+router.post('/newPost'), (req, res, next) => {  
 
-//     User.findById(req.params.id)
-//         .then(data => res.status(200).json(data))
-//         .catch(err => console.log(err))
-// })
-
-// router.post('/edit/:id', (req, res, next)=> {
-//     console.log("holaaa"
-//     console.log(req.params.id)
-
-//     User.findById(req.params.id)
-//     .then(res => {
-//         console.log(res)
-//         res.json({message: 'Your profile has been updated successfully'})
-//     })
-//     .catch(err => {
-//         res.json(err);
-//     }) 
-// })
-
-
-
-
-//     const {id} = req.params;
-//     const object = _.pickBy(req.body, (e,k) => paths.includes(k));
-//     const updates = _.pickBy(object, _.identity);
-//     console.log(updates);
-//    User.findByIdAndUpdate(id, updates ,{new:true})
-//    console.log(updates)
-//         .then( obj => {
-//             res.redirect('/profile/:id')
-//             res.status(200).json({status:'updated',obj});
-//         })
-//         .catch(e => next(e))
-
+  Post.create({
+    title: title.req.body,
+    text: text.req.body,
+    sandwich: sandwich.req.body
+  })
+  .then(res => {
+    res.json(res)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
 
 
 
 module.exports = router
 
 
-
-
-
-// router.patch('/:id',(req,res,next) => {
-//     const {id} = req.params;
-//     const object = _.pickBy(req.body, (e,k) => paths.includes(k));
-//     const updates = _.pickBy(object, _.identity);
-//     console.log(updates);
-//     Model.findByIdAndUpdate(id, updates ,{new:true})
-//         .then( obj => {
-//             res.status(200).json({status:'updated',obj});
-//         })
-//         .catch(e => next(e))
-// })
-
-
-// router.delete('/:id', (req, res, next) => {
-//     User.findByIdAndRemove(req.params.id)
-//     .then(() => {
-//         res.json({message: 'Your profile has been deleted'})
-//     })
-//     .catch( err => {
-//         res.json(err)
-//     })
-// })

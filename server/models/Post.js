@@ -3,7 +3,9 @@ const Schema = mongoose.Schema
 
 const postSchema = new Schema({
     author:{type:Schema.Types.ObjectId, ref:'User'},
-    sandwich:{type:Schema.Types.ObjectId, ref:'Sandwich'}
+    sandwich:{type:Schema.Types.ObjectId, ref:'Sandwich'},
+    title: String,
+    text: String
 }, {
     timestamps: {
         createdAt: 'created_at',

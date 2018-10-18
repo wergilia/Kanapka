@@ -17,7 +17,15 @@ class ProfileService {
         
         return this.service.post(`/edit/${id}`, formData,  {headers: {'Content-Type': 'multipart/form-data'}})
         .then(res => res.data)
-        .catch(err=>console.log(err))
+        .catch(err => console.log(err))
+    }
+
+    newPost = (title, text, author, sandwich) => {
+
+
+        return this.service.post('/newpost')
+        .then(res => res.data)
+        .catch(err => console.log(err))
     }
 
 
