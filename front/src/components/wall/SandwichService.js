@@ -23,6 +23,7 @@ class SandwichService {
         formData.append("condiments",  JSON.stringify(condiments))
         formData.append("photo", imgPath)
         formData.append("author", author)
+
    
         return this.service.post('/create', formData,  {headers: {'Content-Type': 'multipart/form-data'}})
         .then(res => res.data)
@@ -35,7 +36,7 @@ class SandwichService {
         .then(res => res.data)
         .catch(e => console.log(e))
     }
-    sandwichEdit = (name, base, middle, toppings, condiments, id, author, imgPath) => {
+    sandwichEdit = (name, base, middle, toppings, condiments, author, imgPath, id) => {
 
         const formData = new FormData();
         formData.append("name", name)
@@ -43,8 +44,8 @@ class SandwichService {
         formData.append("middle", JSON.stringify(middle))
         formData.append("toppings", JSON.stringify(toppings))
         formData.append("condiments", JSON.stringify(condiments))
-        formData.append("photo", imgPath)
         formData.append("author", author)
+        formData.append("photo", imgPath)
 
 
         return this.service.post(`/edit/${id}`, formData, {headers: {'Content-Type': 'multipart/form-data'}})

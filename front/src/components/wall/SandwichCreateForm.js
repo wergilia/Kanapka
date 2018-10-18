@@ -45,7 +45,7 @@ export default class SandwichCreateForm extends React.Component {
         sandwichMiddle: "",
         sandwichToppings: "",
         sandwichCondiments: "",
-        photo: null
+        file: "",
       });
     })
     .catch(err => console.log(err));

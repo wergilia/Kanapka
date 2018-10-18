@@ -51,18 +51,16 @@ router.post('/edit/:sandwichId',  uploadCloud.single('photo'), (req, res, next) 
         
         const imgPath = req.file.url;
 
-        const newOne = {
+        const newSandwich = new Sandwich({
             name,
             base,
             author,
+            middle,
             toppings,
-            middle, 
             condiments,
-            imgPath
-        }
-
-    const newSandwich = new Sandwich(newOne)
-    newSandwich.save()
+            imgPath,
+            author
+        }).save()
         .then(created => { console.log(created); return res.status(200).json(created) })
         .catch(e => console.log(e))
 })

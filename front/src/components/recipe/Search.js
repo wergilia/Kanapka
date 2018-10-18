@@ -10,8 +10,8 @@ export default class Search extends React.Component {
         }
     }
 
-    searchRecipe(stringToSearch) {
-        axios.get(`http://food2fork.com/api/search?key=2ac991b28a23d32edc65065082b35cb1&q=${stringToSearch}`)
+    searchRecipe(searchText) {
+        axios.get(`http://food2fork.com/api/search?key=2ac991b28a23d32edc65065082b35cb1&q=${searchText}`)
             .then(res => {
                 console.log(res)
               
@@ -24,7 +24,7 @@ export default class Search extends React.Component {
 
         return(
             <div>
-                <SearchBar submitSearch = { stringToSearch => this.searchRecipe(stringToSearch) }/>
+                <SearchBar submitSearch = { searchText => this.searchRecipe(searchText) }/>
                 <h3>Recipe</h3>
 
             </div>

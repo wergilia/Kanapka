@@ -25,7 +25,7 @@ export default class SandwichDisplayer extends React.Component {
 
     return (
       <div>
-        <img src={imgPath} />
+
 
         <div className="name">
           <h2>

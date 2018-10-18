@@ -5,31 +5,31 @@ export default class SearchBar extends React.Component {
  constructor(props) {
    super(props);
    this.state = {
-     stringToSearch: "",
+     searchText: "",
    };
  }
 
  handleInputChange = (string) => {
-   this.setState({ stringToSearch: string.target.value });
+   this.setState({ searchText: string.target.value });
  }
 
  handleSubmit = () => {
-   let {stringToSearch} = this.state
-   this.props.submitSearch(stringToSearch)
+   let {searchText} = this.state
+   this.props.submitSearch(searchText)
  }
 
  render() {
-   let {stringToSearch} = this.props;
+   let {searchText} = this.props;
    return (
      <div>
        <input
          style={{width: "400px"}}
          placeholder = "What do you want to eat?"
          type = "text"
-         value = { stringToSearch }
+         value = { searchText }
          onChange = { element => this.handleInputChange(element)}
        />
-       <button onClick = { () => this.handleSubmit()}>Search for your favourite recipe/> </button>
+       <button onClick = { () => this.handleSubmit()}>Search for your favourite recipe </button>
      </div>
    )
  }

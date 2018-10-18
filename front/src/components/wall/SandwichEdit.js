@@ -53,6 +53,7 @@ export default class SandwichEdit extends React.Component {
     const file = this.state.file
 
 
+
     this.service.sandwichEdit(name, sandwichBase, sandwichMiddle, sandwichToppings, sandwichCondiments, author, file, id)
       .then(res => {
         this.setState({
@@ -61,7 +62,7 @@ export default class SandwichEdit extends React.Component {
           sandwichMiddle: "",
           sandwichToppings: "",
           sandwichCondiments: "",
-          photo: ""
+          file: "",
         });
       })
       .catch(err => console.log(err));
