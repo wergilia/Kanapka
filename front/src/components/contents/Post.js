@@ -1,38 +1,29 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import React, { Component } from 'react';
+// // import { Link } from 'react-router-dom';
+// import Profile from '../profile/Profile';
+// import SandwichDisplayer from '../wall/SandwichDisplayer'
 
-class Post extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+// class Post extends Component {
+//     constructor() {
+//         super();
+//         this.state = {
 
-        };
-
-
-    }
-
-    render() {
-
-        return (
-            <div>
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="images/office.jpg" />
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-
-        )
-    }
-}
+//         };
 
 
-export default Post;
+//     }
+
+//     render() {
+
+//         return (
+//             <div>
+                
+//                 <SandwichDisplayer/>
+//             </div>
+
+//         )
+//     }
+// }
+
+
+// export default Post;
